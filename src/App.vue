@@ -1,30 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <MyMenu :data="tree"></MyMenu>
   </div>
-  <router-view />
 </template>
+<script >
+import MyMenu from './components/my-menu.jsx'
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  components: {
+    MyMenu
+  },
+  data() {
+    return {
+      tree: [
+        { title: '菜单1' },
+        { title: '菜单2' },
+        {
+          title: '菜单3',
+          children: [
+            { title: '菜单3-1' },
+            { title: '菜单3-2' }
+          ]
+        },
+      ]
     }
   }
 }
+</script>
+<style lang="scss">
 </style>
